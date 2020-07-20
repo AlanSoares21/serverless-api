@@ -5,6 +5,7 @@ module.exports = async function (context, req) {
     const Products = MongoClient.collection('products');
     const res = await Products.find({});
     const body = await res.toArray();
+    closeConnectionFn();
     context.res = {
         body,
         status:200
